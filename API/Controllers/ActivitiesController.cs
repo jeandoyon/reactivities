@@ -1,16 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
-using Persistence;
 using Domain;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
 using Application.Activities;
+using System.Threading;
 
 namespace API.Controllers
 {
     public class ActivitiesController : BaseApiController
     {
         [HttpGet]
+        /* 
+        public async Task<ActionResult<List<Activity>>> GetActivities(CancellationToken cancelationToken)
+        {
+            return await Mediator.Send(new List.Query(), cancelationToken);
+        }
+        */     
         public async Task<ActionResult<List<Activity>>> GetActivities()
         {
             return await Mediator.Send(new List.Query());
